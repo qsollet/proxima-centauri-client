@@ -8,7 +8,7 @@ var CONFIG = (function() {
         return def;
     }
     config.data = {
-        'camera_max_zoom': 5,
+        'camera_max_zoom': 0.001,
     };
 
     return config;

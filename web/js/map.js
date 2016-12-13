@@ -1,6 +1,7 @@
 var MAP = (function() {
     var map = {};
     map.tile = {};
+    map.definition = {};
 
     map.createTile = function(hex) {
         // Geometry: http://threejs.org/docs/index.html#Reference/Extras.Geometries/CircleGeometry
@@ -32,6 +33,11 @@ var MAP = (function() {
         for (var i in this.tile) {
             scene.add(this.tile[i]);
         }
+    }
+
+    map.loadTexture = function(obj) {
+        // TODO check structure?
+        this.definition = obj;
     }
 
     return map;

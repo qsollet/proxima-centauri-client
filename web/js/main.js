@@ -17,8 +17,17 @@
     document.body.appendChild( renderer.domElement );
 
     var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera( 45, (window.innerWidth * canvasWidth) / window.innerHeight, 0.9, 1000 );
-    // var camera = new THREE.OrthographicCamera( - window.innerWidth / 2, window.innerWidth / 2, window.innerHeight / 2, - window.innerHeight / 2, 1, 100 );
+    // var camera = new THREE.PerspectiveCamera( 45, (window.innerWidth * canvasWidth) / window.innerHeight, 0.9, 1000 );
+    var height = 10;
+    var width = height * (window.innerWidth * canvasWidth) / window.innerHeight;
+    var camera = new THREE.OrthographicCamera(
+        width / -2,
+        width / 2,
+        height / 2,
+        height / -2,
+        1,
+        21
+    );
 
     var conf = CONFIG;
     var input = INPUT;
@@ -41,13 +50,15 @@
         camera.position.y -= 1;
     }
     camera.zoomIn = function() {
-        camera.position.z -= 1;
-        if (camera.position.z < conf.get('camera_max_zoom', 5)) {
-            camera.position.z = conf.get('camera_max_zoom', 5);
-        }
+        camera.zoom *= 1.1;
+        camera.updateProjectionMatrix();
     }
     camera.zoomOut = function() {
-        camera.position.z += 1;
+        camera.zoom *= 0.9;
+        if (camera.zoom < conf.get('camera_max_zoom', 0)) {
+            camera.zoom = conf.get('camera_max_zoom', 0);
+        }
+        camera.updateProjectionMatrix();
     }
     camera.reset = function() {
         camera.position.set(0, 0, 20);
