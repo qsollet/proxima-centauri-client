@@ -1,0 +1,17 @@
+body {
+    overflow: hidden;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.info {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 30%;
+    height: auto;
+    background-color: #bbffbb;
+}
