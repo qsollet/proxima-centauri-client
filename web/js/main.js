@@ -34,6 +34,7 @@
     var map = MAP;
 
     map.buildRandom(10, 10);
+    // map.buildFromData();
     map.addTilesToScene(scene);
 
     // TODO lock the movement to the edge of the map

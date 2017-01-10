@@ -25,6 +25,10 @@ var MAP = (function() {
         }
     }
 
+    map.buildFromData = function(data) {
+        this.tile[key] = this.createTile(new Hex(data.x, data.y, data.ref))
+    }
+
     map.loadFromString = function(str) {
         // TODO load from a json string
     }
