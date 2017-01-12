@@ -16,7 +16,25 @@
     renderer.setSize( window.innerWidth * canvasWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
 
+    // Scene and group
     var scene = new THREE.Scene();
+    var tileGroup = new THREE.Group();
+    scene.add(tileGroup);
+
+    // Load definitions
+    var tileDefinition = {
+        'DTI00001': {
+            'material': new THREE.MeshBasicMaterial({'color':0x00ff00})
+        },
+        'DTI00002': {
+            'material': new THREE.MeshBasicMaterial({'color':0xff0000})
+        },
+        'DTI00003': {
+            'material': new THREE.MeshBasicMaterial({'color':0x0000ff})
+        },
+    };
+
+    // Camera
     // var camera = new THREE.PerspectiveCamera( 45, (window.innerWidth * canvasWidth) / window.innerHeight, 0.9, 1000 );
     var height = 10;
     var width = height * (window.innerWidth * canvasWidth) / window.innerHeight;
@@ -32,6 +50,7 @@
     var conf = CONFIG;
     var input = INPUT;
     var map = MAP;
+    map.tileDefinition = tileDefinition;
 
     map.buildRandom(10, 10);
     // map.buildFromData();

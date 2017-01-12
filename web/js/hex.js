@@ -42,7 +42,6 @@ Hex.prototype = {
     getMaterial: function(id) {
         // Dirty funtion to get right material
         color = Math.random() * 0xffffff;
-        console.log(color);
         if (id == 'DTI00001') {
             // plain - green
             color = '';
