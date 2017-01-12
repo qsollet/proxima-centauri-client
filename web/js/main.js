@@ -22,6 +22,7 @@
     scene.add(tileGroup);
 
     // Load definitions
+    // TODO make this dynamic using external files
     var tileDefinition = {
         'DTI00001': {
             'material': new THREE.MeshBasicMaterial({'color':0x00ff00})
@@ -33,9 +34,53 @@
             'material': new THREE.MeshBasicMaterial({'color':0x0000ff})
         },
     };
+    var tileData = {
+      "3:0":"DTI00002",
+      "2:1":"DTI00001",
+      "1:2":"DTI00001",
+      "0:3":"DTI00001",
+
+      "3:-1":"DTI00001",
+      "2:0":"DTI00003",
+      "1:1":"DTI00001",
+      "0:2":"DTI00001",
+      "-1:3":"DTI00001",
+
+      "3:-2":"DTI00001",
+      "2:-1":"DTI00001",
+      "1:0":"DTI00003",
+      "0:1":"DTI00002",
+      "-1:2":"DTI00001",
+      "-2:3":"DTI00001",
+
+      "3:-3":"DTI00001",
+      "2:-2":"DTI00001",
+      "1:-1":"DTI00001",
+      "0:0":"DTI00002",
+      "-1:1":"DTI00001",
+      "-2:2":"DTI00001",
+      "-3:3":"DTI00001",
+
+      "2:-3":"DTI00001",
+      "1:-2":"DTI00002",
+      "0:-1":"DTI00002",
+      "-1:0":"DTI00003",
+      "-2:1":"DTI00001",
+      "-3:2":"DTI00001",
+
+      "1:-3":"DTI00001",
+      "0:-2":"DTI00001",
+      "-1:-1":"DTI00002",
+      "-2:0":"DTI00001",
+      "-3:1":"DTI00001",
+
+      "0:-3":"DTI00001",
+      "-1:-2":"DTI00001",
+      "-2:-1":"DTI00001",
+      "-3:0":"DTI00001"
+    }
 
     // Camera
-    // var camera = new THREE.PerspectiveCamera( 45, (window.innerWidth * canvasWidth) / window.innerHeight, 0.9, 1000 );
     var height = 10;
     var width = height * (window.innerWidth * canvasWidth) / window.innerHeight;
     var camera = new THREE.OrthographicCamera(
@@ -50,10 +95,9 @@
     var conf = CONFIG;
     var input = INPUT;
     var map = MAP;
-    map.tileDefinition = tileDefinition;
 
-    map.buildRandom(10, 10);
-    // map.buildFromData();
+    map.tileDefinition = tileDefinition;
+    map.buildFromData(tileData);
     map.addTilesToScene(scene);
 
     // TODO lock the movement to the edge of the map

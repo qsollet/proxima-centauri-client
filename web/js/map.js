@@ -31,7 +31,10 @@ var MAP = (function() {
     }
 
     map.buildFromData = function(data) {
-        this.tile[key] = this.createTile(new Hex(data.x, data.y, data.ref))
+        for (key in data) {
+            var tmp = key.split(':')
+            this.tile[key] = this.createTile(new Hex(parseInt(tmp[0]), parseInt(tmp[1]), data[key]))
+        }
     }
 
     map.loadFromString = function(str) {
