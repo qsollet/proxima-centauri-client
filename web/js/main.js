@@ -56,6 +56,9 @@
     var clickAction = function(x, y) {
         console.log('Click happened at ', x, y);
     }
+    var moveAction = function(x, y) {
+        console.log('Move happened at ', x, y);
+    }
 
     input.registerKeyUpdate('a', camera.moveLeft);
     input.registerKeyUpdate('d', camera.moveRight);
@@ -66,6 +69,7 @@
     input.registerWheelAction('yDown', camera.zoomIn);
     input.registerWheelAction('yUp', camera.zoomOut);
     input.registerMouseAction('click', clickAction);
+    input.registerMouseAction('move', moveAction);
     input.registerKeyAction('p', camera.reset);
 
     // Reference Lines

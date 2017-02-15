@@ -68,7 +68,13 @@ var INPUT = (function() {
             mouseActions['click'](e.pageX, e.pageY);
         }
     };
-    // todo add mouse move as mouse update
+
+    document.body.onmousemove = function(e) {
+        if (typeof mouseActions['move'] !== 'undefined') {
+            e.preventDefault();
+            mouseActions['move'](e.pageX, e.pageY);
+        }
+    }
 
     // Wheel event
     // yDown, yUp
